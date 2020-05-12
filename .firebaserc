@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "todo-app-53fa8": {
+      "hosting": {
+        "todo-app": [
+          "todo-app-53fa8"
+        ]
+      }
+    }
+  }
+}
