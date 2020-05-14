@@ -49,4 +49,8 @@ export class AppComponent implements OnInit{
     doc.todo.completed = !doc.todo.completed;
     this.firestore.doc<Todo>(`todo-list/test/todo/${doc.id}`).update(doc.todo);
   }
+
+  deleteTodo(doc: Document): void {
+    this.firestore.doc<Todo>(`todo-list/test/todo/${doc.id}`).delete();
+  }
 }

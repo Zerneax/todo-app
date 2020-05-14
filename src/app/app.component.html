@@ -7,14 +7,17 @@
       <div class="column col-6 col-mx-auto">
         <div class="columns">
           <ng-container *ngFor="let doc of documents | async">
-              <div class="column col-2">
-                <label class="form-checkbox">
+              <div class="column col-1">
+                <label class="form-checkbox text-secondary">
                   <input type="checkbox" [checked]="doc.todo.completed" (change)="changeTodoToComplete(doc)">
                   <i class="form-icon"></i>
                 </label>
               </div>
               <div class="column col-10">
-                <label [ngClass]="{'text-line-through': doc.todo.completed}">{{doc.todo.title}}</label>
+                <label class="form-label" [ngClass]="{'text-line-through': doc.todo.completed}">{{doc.todo.title}}</label>
+              </div>
+              <div class="column col-1">
+                <i class="icon icon-cross text-secondary" (click)="deleteTodo(doc)"></i>
               </div>
           </ng-container>
         </div>
@@ -24,7 +27,7 @@
       <div class="column col-6 col-mx-auto">
         <div class="columns">
           <div class="column col-12 col-mx-auto">
-            <input type="text" class="form-input custom-input" placeholder="title" [(ngModel)]="newTodo" (keyup.enter)="addNewTodo()">
+            <input type="text" class="form-input custom-input" placeholder="add new todo..." [(ngModel)]="newTodo" (keyup.enter)="addNewTodo()">
           </div>
         </div>
       </div>
