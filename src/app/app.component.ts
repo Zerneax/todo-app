@@ -22,6 +22,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.todosCollection = this.firestore.collection<Todo>('todo-list/test/todo');
 
+    // .snapshotChanges() returns a DocumentChangeAction[]
     this.documents = this.todosCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data: Todo = a.payload.doc.data() as Todo;
@@ -41,6 +42,7 @@ export class AppComponent implements OnInit{
       date: new Date(),
       completed: false
     });
+    this.newTodo = "";
   }
 
   changeTodoToComplete(doc: Document): void {

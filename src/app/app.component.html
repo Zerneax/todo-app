@@ -1,36 +1,33 @@
 <div class="container">
 
-  <h1 class="text-center text-primary text-bold">My TODO</h1>
+  <h1 class="text-center text-primary text-bold">My todo list</h1>
 
-  <div class="columns">
-    <div class="column col-6 col-mx-auto">
-      <div class="columns">
-        <ng-container *ngFor="let doc of documents | async">
-            <!-- <div class="column col-4">
-              <p>{{ convertTimestampToDate(todo.date) |  date:'yyyy-MM-dd HH:mm:ss'}}</p>
-            </div> -->
-            <div class="column col-2">
-              <input type="checkbox" [checked]="doc.todo.completed" (change)="changeTodoToComplete(doc)">
-            </div>
-            <div class="column col-10">
-              <p>{{doc.todo.title}}</p>
-            </div>
-        </ng-container>
-      </div>
-
-    </div>
-  </div>
-  <div class="columns text-center">
-    <div class="column col-6 col-mx-auto">
-      <div class="columns text-center">
-        <div class="column col-6 col-mx-auto">
-          <input type="text" class="form-input" placeholder="title" [(ngModel)]="newTodo">
-        </div>
-        <div class="column col-6">
-          <button type="button" class="btn btn-secondary" (click)="addNewTodo()"> + </button>
+  <section class="todos">
+    <div class="columns">
+      <div class="column col-6 col-mx-auto">
+        <div class="columns">
+          <ng-container *ngFor="let doc of documents | async">
+              <div class="column col-2">
+                <label class="form-checkbox">
+                  <input type="checkbox" [checked]="doc.todo.completed" (change)="changeTodoToComplete(doc)">
+                  <i class="form-icon"></i>
+                </label>
+              </div>
+              <div class="column col-10">
+                <label [ngClass]="{'text-line-through': doc.todo.completed}">{{doc.todo.title}}</label>
+              </div>
+          </ng-container>
         </div>
       </div>
     </div>
-  </div>
-
+    <div class="columns text-center">
+      <div class="column col-6 col-mx-auto">
+        <div class="columns">
+          <div class="column col-12 col-mx-auto">
+            <input type="text" class="form-input custom-input" placeholder="title" [(ngModel)]="newTodo" (keyup.enter)="addNewTodo()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
