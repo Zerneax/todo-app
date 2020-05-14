@@ -1,6 +1,13 @@
+@font-face {
+  font-family: "arkipelago";
+  src: url("./src/assets/font/Arkipelago.otf");
+}
+
 // define here variables for spectre.css
 $primary-color: #ba5624;
 $secondary-color: #b54251;
+$base-font-family: 'arkipelago';
+$font-size: 1.2rem;
 
 
 @import "node_modules/spectre.css/src/spectre.scss";
