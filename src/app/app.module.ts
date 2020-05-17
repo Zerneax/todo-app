@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { TodosModule } from './pages/todos/todos.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    TodosModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h1 class="text-center text-primary text-bold">My todo list</h1>
+
+  <section class="todos">
+    <div class="columns">
+      <div class="column col-6 col-mx-auto">
+        <div class="columns">
+          <ng-container *ngFor="let doc of documents | async">
+              <div class="column col-1">
+                <label class="form-checkbox text-secondary">
+                  <input type="checkbox" [checked]="doc.todo.completed" (change)="changeTodoToComplete(doc)">
+                  <i class="form-icon"></i>
+                </label>
+              </div>
+              <div class="column col-10">
+                <label class="form-label" [ngClass]="{'text-line-through': doc.todo.completed}">{{doc.todo.title}}</label>
+              </div>
+              <div class="column col-1">
+                <i class="icon icon-cross text-secondary" (click)="deleteTodo(doc)"></i>
+              </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="columns text-center mt-2">
+      <div class="column col-6 col-mx-auto">
+        <div class="columns">
+          <div class="column col-12 col-mx-auto">
+            <input type="text" class="form-input custom-input" placeholder="add new todo..." [(ngModel)]="newTodo" (keyup.enter)="addNewTodo()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
