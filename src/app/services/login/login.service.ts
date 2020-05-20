@@ -7,7 +7,7 @@ import { User } from 'src/app/models/user';
 export class LoginService {
 
 
-  private currentUser: User;
+  private currentUser: User = undefined;
 
   setCurrentUser(user: User) {
     this.currentUser = user;
