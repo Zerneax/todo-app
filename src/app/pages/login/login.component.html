@@ -1,26 +1,28 @@
 <div class="container">
-  <div class="columns">
-    <div class="column col-5 col-mx-auto">
+  <div [ngClass]="{'loading loading-lg': isLoading}">
+    <div class="columns">
+      <div class="column col-5 col-mx-auto">
 
-      <h1 class="text-center text-primary text-bold">Login to your account</h1>
+        <h1 class="text-center text-primary text-bold">Login to your account</h1>
 
-      <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm">
 
-        <div class="form-group">
-          <label class="form-label" for="email-input">Email</label>
-          <input class="form-input" type="text" id="email-input" placeholder="Email" formControlName="email">
-        </div>
+          <div class="form-group">
+            <label class="form-label" for="email-input">Email</label>
+            <input class="form-input" type="text" id="email-input" placeholder="Email" formControlName="email">
+          </div>
 
-        <div class="form-group">
-          <label class="form-label" for="password-input">Password</label>
-          <input class="form-input" type="password" id="password-input" formControlName="password">
-        </div>
+          <div class="form-group">
+            <label class="form-label" for="password-input">Password</label>
+            <input class="form-input" type="password" id="password-input" formControlName="password">
+          </div>
 
-        <div class="text-center">
-          <button class="btn btn-primary mt-2" [disabled]="loginForm.invalid" (click)="login()">login</button>
-        </div>
+          <div class="text-center">
+            <button class="btn btn-primary mt-2" [disabled]="loginForm.invalid" (click)="login()">login</button>
+          </div>
 
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </div>

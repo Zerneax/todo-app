@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  isLoading: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private firebaseAuth: AngularFireAuth,
@@ -30,15 +31,18 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.isLoading = !this.isLoading;
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
 
     this.firebaseAuth.signInWithEmailAndPassword(email, password).then(
       (response) => {
+        this.isLoading = !this.isLoading;
         this.loginService.setCurrentUser({email: response.user.email});
         this.router.navigate(['todos']);
       }
     ).catch(error => {
+      this.isLoading = !this.isLoading;
       console.log("KO", error);
     });
   }
