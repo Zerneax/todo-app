@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { LoginService } from 'src/app/services/login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +14,9 @@ export class SigninComponent implements OnInit {
   signinForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private firebaseAuth: AngularFireAuth) { }
+    private firebaseAuth: AngularFireAuth,
+    private loginService: LoginService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.initSigninForm();
@@ -31,7 +35,8 @@ export class SigninComponent implements OnInit {
 
     this.firebaseAuth.createUserWithEmailAndPassword(email, password).then(
       (response) => {
-        console.log(response);
+        this.loginService.setCurrentUser({email: response.user.email});
+        this.router.navigate(['todos']);
       }
     ).catch(
       (error) => {

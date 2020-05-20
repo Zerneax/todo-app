@@ -7,13 +7,13 @@ import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
-    path: '', component: TodosComponent
+    path: 'todos', component: TodosComponent
   },
   {
     path: 'signin', component: SigninComponent
   },
   {
-    path: 'login', component: LoginComponent
+    path: '', component: LoginComponent
   }
 ];
 
