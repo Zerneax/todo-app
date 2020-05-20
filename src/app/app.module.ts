@@ -10,6 +10,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { TodosModule } from './pages/todos/todos.module';
 import { SigninModule } from './pages/signin/signin.module';
+import { LoginModule } from './pages/login/login.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SigninModule } from './pages/signin/signin.module';
     AngularFirestoreModule,
     FormsModule,
     TodosModule,
-    SigninModule
+    SigninModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
