@@ -4,6 +4,8 @@ import { Todo } from 'src/app/models/todo';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Document } from 'src/app/models/document';
+import { LoginService } from 'src/app/services/login/login.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-todos',
@@ -15,11 +17,14 @@ export class TodosComponent implements OnInit {
   todosCollection: AngularFirestoreCollection<Todo>;
   documents: Observable<Document[]>;
   newTodo: string = '';
+  currentUser: User;
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore,
+    private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.todosCollection = this.firestore.collection<Todo>('todo-list/test/todo');
+    this.currentUser = this.loginService.getCurrentUser();
+    this.todosCollection = this.firestore.collection<Todo>(`${this.currentUser.id}`);
 
     // .snapshotChanges() returns a DocumentChangeAction[]
     this.documents = this.todosCollection.snapshotChanges().pipe(
@@ -36,7 +41,7 @@ export class TodosComponent implements OnInit {
   }
 
   addNewTodo(): void {
-    this.firestore.collection('todo-list/test/todo').add({
+    this.firestore.collection(`${this.currentUser.id}`).add({
       title: this.newTodo,
       date: new Date(),
       completed: false
@@ -46,11 +51,11 @@ export class TodosComponent implements OnInit {
 
   changeTodoToComplete(doc: Document): void {
     doc.todo.completed = !doc.todo.completed;
-    this.firestore.doc<Todo>(`todo-list/test/todo/${doc.id}`).update(doc.todo);
+    this.firestore.doc<Todo>(`${this.currentUser.id}/${doc.id}`).update(doc.todo);
   }
 
   deleteTodo(doc: Document): void {
-    this.firestore.doc<Todo>(`todo-list/test/todo/${doc.id}`).delete();
+    this.firestore.doc<Todo>(`${this.currentUser.id}/${doc.id}`).delete();
   }
 
 }

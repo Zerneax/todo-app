@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.firebaseAuth.signInWithEmailAndPassword(email, password).then(
       (response) => {
         this.isLoading = !this.isLoading;
-        this.loginService.setCurrentUser({email: response.user.email});
+        this.loginService.setCurrentUser({email: response.user.email, id: response.user.uid});
         this.router.navigate(['todos']);
       }
     ).catch(error => {
