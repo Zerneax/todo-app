@@ -29,7 +29,11 @@ export class SigninComponent implements OnInit {
     const email = this.signinForm.get('email').value;
     const password = this.signinForm.get('password').value;
 
-    this.firebaseAuth.createUserWithEmailAndPassword(email, password).catch(
+    this.firebaseAuth.createUserWithEmailAndPassword(email, password).then(
+      (response) => {
+        console.log(response);
+      }
+    ).catch(
       (error) => {
         alert(error.code);
         console.log(error);

@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { TodosModule } from './pages/todos/todos.module';
+import { SigninModule } from './pages/signin/signin.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TodosModule } from './pages/todos/todos.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     FormsModule,
-    TodosModule
+    TodosModule,
+    SigninModule
   ],
   providers: [],
   bootstrap: [AppComponent]
