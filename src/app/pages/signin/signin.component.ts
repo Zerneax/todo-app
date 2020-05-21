@@ -49,4 +49,7 @@ export class SigninComponent implements OnInit {
     )
   }
 
+  goToLogin() {
+    this.router.navigate(['']);
+  }
 }

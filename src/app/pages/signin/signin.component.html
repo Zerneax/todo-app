@@ -17,6 +17,8 @@
             <input class="form-input" type="password" id="password-input" formControlName="password">
           </div>
 
+          <p>Already registered ? <a (click)="goToLogin()">login</a></p>
+
           <div class="text-center">
             <button class="btn btn-primary mt-2" [disabled]="signinForm.invalid" (click)="createAccount()">create</button>
           </div>

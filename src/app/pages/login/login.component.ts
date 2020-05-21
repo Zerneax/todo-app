@@ -47,4 +47,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  goToSignin() {
+    this.router.navigate(['signin']);
+  }
 }
