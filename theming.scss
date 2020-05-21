@@ -12,3 +12,12 @@ $font-size: 1.2rem;
 
 @import "node_modules/spectre.css/src/spectre.scss";
 @import "node_modules/spectre.css/src/spectre-icons.scss";
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+a {
+  cursor: pointer;
+}
