@@ -58,4 +58,7 @@ export class TodosComponent implements OnInit {
     this.firestore.doc<Todo>(`${this.currentUser.id}/${doc.id}`).delete();
   }
 
+  logout() {
+    this.loginService.logout();
+  }
 }
